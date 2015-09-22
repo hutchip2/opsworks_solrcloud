@@ -5,6 +5,7 @@
 # Setup Solr Service User
 include_recipe 'solrcloud::user'
 include_recipe 'solrcloud::java'
+include_recipe 'solrcloud::attributes'
 
 # Require for zk gem
 %w(patch gcc make).each do |pkg|
