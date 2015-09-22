@@ -22,7 +22,6 @@ end.run_action(:install)
 require 'zk'
 require 'net/http'
 require 'json'
-
 require 'tmpdir'
 
 temp_d = Dir.tmpdir
