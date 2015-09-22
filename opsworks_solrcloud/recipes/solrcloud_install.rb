@@ -65,11 +65,10 @@ link node['solrcloud']['install_dir'] do
 end
 
 # Link Jetty lib dir
-link File.join(node['solrcloud']['install_dir'], 'lib') do
-  to File.join(node['solrcloud']['install_dir'], 'example', 'lib')
+link ::File.join(node['solrcloud']['install_dir'], 'lib') do
+  to ::File.join(node['solrcloud']['install_dir'], node['solrcloud']['server_base_dir_name'], 'lib')
   owner node['solrcloud']['user']
   group node['solrcloud']['group']
-  action :create
 end
 
 # Link Solr start.jar
