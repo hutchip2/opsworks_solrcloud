@@ -1,3 +1,5 @@
+include_recipe 'solrcloud::attributes'
+
 chef_gem 'zk' do
   action :nothing
 end.run_action(:install)
