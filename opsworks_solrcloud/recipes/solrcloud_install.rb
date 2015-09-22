@@ -55,10 +55,7 @@ bash 'extract_solr_tarball' do
     chown -R #{node['solrcloud']['user']}:#{node['solrcloud']['group']} #{node['solrcloud']['source_dir']}
     chmod #{node['solrcloud']['dir_mode']} #{node['solrcloud']['source_dir']}
   EOS
-
-  not_if { File.exist?(node['solrcloud']['source_dir']) }
-  creates "#{node['solrcloud']['install_dir']}/dist/solr-#{node['solrcloud']['version']}.war"
-  action :run
+  creates ::File.join(node['solrcloud']['source_dir'], 'dist', "solr-core-#{node['solrcloud']['version']}.jar")
 end
 
 # Link Solr install_dir to Current source_dir
