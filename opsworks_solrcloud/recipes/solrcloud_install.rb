@@ -40,8 +40,9 @@ end
 
 # Solr Version Package File
 remote_file tarball_file do
-  source node['solrcloud']['tarball']['url']
-  not_if { File.exist?("#{node['solrcloud']['source_dir']}/dist/solr-#{node['solrcloud']['version']}.war") }
+  source tarball_url
+  checksum tarball_checksum
+  not_if { ::File.exist?("#{node['solrcloud']['source_dir']}/dist/solr-core-#{node['solrcloud']['version']}.jar") }
 end
 
 # Extract and Setup Solr Source directories
