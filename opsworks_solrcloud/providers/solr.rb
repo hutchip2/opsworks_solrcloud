@@ -23,7 +23,9 @@ action :deployconfig do
   servers_and_ports = OpsworksSolrcloud::Zookeeper.get_server_array(exhibitor_url)
   Chef::Log.info("Using zookeeper hosts string for solr #{servers_and_ports}")
 
+  Chef::Log.info("zk_hosts array #{node['solrcloud']['solr_config']['solrcloud']['zk_host']}")
   node.override['solrcloud']['solr_config']['solrcloud']['zk_host'] = servers_and_ports
+  Chef::Log.info("zk_hosts array #{node['solrcloud']['solr_config']['solrcloud']['zk_host']}")
 
   Chef::Log.info('Starting deployment of solr configuration')
   Chef::Log.info("Using jetty context #{node['solrcloud']['jetty_config']['context']['path']}")
