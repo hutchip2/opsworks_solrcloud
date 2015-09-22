@@ -104,7 +104,6 @@ directory node['solrcloud']['zk_run_data_dir'] do
   group node['solrcloud']['group']
   mode 0755
   recursive true
-  action :create
   only_if { node['solrcloud']['zk_run'] }
 end
 
