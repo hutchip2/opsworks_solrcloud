@@ -72,11 +72,10 @@ link ::File.join(node['solrcloud']['install_dir'], 'lib') do
 end
 
 # Link Solr start.jar
-link File.join(node['solrcloud']['install_dir'], 'start.jar') do
-  to File.join(node['solrcloud']['install_dir'], 'example', 'start.jar')
+link ::File.join(node['solrcloud']['install_dir'], 'start.jar') do
+  to ::File.join(node['solrcloud']['install_dir'], node['solrcloud']['server_base_dir_name'], 'start.jar')
   owner node['solrcloud']['user']
   group node['solrcloud']['group']
-  action :create
 end
 
 # Setup Directories for Solr
