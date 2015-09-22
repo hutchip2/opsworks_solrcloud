@@ -83,20 +83,19 @@ end
  node['solrcloud']['pid_dir'],
  node['solrcloud']['data_dir'],
  node['solrcloud']['solr_home'],
- node['solrcloud']['shared_lib'],
  node['solrcloud']['config_sets'],
+ node['solrcloud']['cores_home'],
  node['solrcloud']['zkconfigsets_home'],
- File.join(node['solrcloud']['install_dir'], 'etc'),
- File.join(node['solrcloud']['install_dir'], 'resources'),
- File.join(node['solrcloud']['install_dir'], 'webapps'),
- File.join(node['solrcloud']['install_dir'], 'contexts')
+ ::File.join(node['solrcloud']['install_dir'], 'etc'),
+ ::File.join(node['solrcloud']['install_dir'], 'resources'),
+ ::File.join(node['solrcloud']['install_dir'], 'webapps'),
+ ::File.join(node['solrcloud']['install_dir'], 'contexts')
 ].each do |dir|
   directory dir do
     owner node['solrcloud']['user']
     group node['solrcloud']['group']
     mode 0755
     recursive true
-    action :create
   end
 end
 
