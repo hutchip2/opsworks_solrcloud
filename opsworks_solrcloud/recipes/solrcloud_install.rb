@@ -61,9 +61,7 @@ end
 # Link Solr install_dir to Current source_dir
 link node['solrcloud']['install_dir'] do
   to node['solrcloud']['source_dir']
-  owner node['solrcloud']['user']
-  group node['solrcloud']['group']
-  action :create
+  notifies :restart, 'service[solr]', :delayed if node['solrcloud']['notify_restart_upgrade']
 end
 
 # Link Jetty lib dir
