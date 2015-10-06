@@ -174,7 +174,7 @@ directory '/usr/local/solr/solr/cores/core3' do
 end
 
 file '/usr/local/solr/solr/cores/core1/core.properties' do
-  content 'name=core1'
+  content 'name=core1\nconfigName='
   mode '0755'
   owner 'ec2-user'
 end
