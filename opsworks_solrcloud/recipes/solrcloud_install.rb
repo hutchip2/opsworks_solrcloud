@@ -153,22 +153,6 @@ remote_file tarball_file do
 end
 
 
-directory '/usr/local/solr/solr/configsets/basic_configs' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-end
-
-
-directory '/usr/local/solr/solr/configsets/basic_configs/conf' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-end
-
-
 directory '/usr/local/solr/solr/cores/core1' do
   owner 'root'
   group 'root'
@@ -191,19 +175,19 @@ directory '/usr/local/solr/solr/cores/core3' do
 end
 
 file '/usr/local/solr/solr/cores/core1/core.properties' do
-  content 'configName=basic_configs'
+  content 'configSet='
   mode '0755'
   owner 'ec2-user'
 end
 
 file '/usr/local/solr/solr/cores/core2/core.properties' do
-  content 'configName=basic_configs'
+  content 'configSet=conf'
   mode '0755'
   owner 'ec2-user'
 end
 
 file '/usr/local/solr/solr/cores/core3/core.properties' do
-  content 'configName=basic_configs'
+  content 'configSet=/usr/local/solr_zkconfigsets/conf'
   mode '0755'
   owner 'ec2-user'
 end
