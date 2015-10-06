@@ -160,12 +160,12 @@ directory '/usr/local/solr/solr/configsets/conf' do
   action :create
 end
 
-remote_file "Copy configset files" do 
-  path "/usr/local/solr/solr/configsets/conf/solrconfig.xml" 
-  source "/usr/local/solr_zkconfigsets/conf/solrconfig.xml"
+file "/usr/local/solr/solr/configsets/conf/solrconfig.xml" do
   owner 'root'
   group 'root'
   mode 0755
+  content ::File.open("/usr/local/solr_zkconfigsets/conf/solrconfig.xml").read
+  action :create
 end
 
 directory '/usr/local/solr/solr/cores/core1' do
