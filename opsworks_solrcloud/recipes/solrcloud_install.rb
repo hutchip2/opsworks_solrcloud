@@ -152,6 +152,7 @@ remote_file tarball_file do
   action :delete
 end
 
+
 directory '/usr/local/solr/solr/cores/core1' do
   owner 'root'
   group 'root'
@@ -174,19 +175,19 @@ directory '/usr/local/solr/solr/cores/core3' do
 end
 
 file '/usr/local/solr/solr/cores/core1/core.properties' do
-  content 'configName='
+  content 'configName=basic_configs'
   mode '0755'
   owner 'ec2-user'
 end
 
 file '/usr/local/solr/solr/cores/core2/core.properties' do
-  content 'configName=coreConfig'
+  content 'configName=basic_configs'
   mode '0755'
   owner 'ec2-user'
 end
 
 file '/usr/local/solr/solr/cores/core3/core.properties' do
-  content 'name=core3'
+  content 'configName=basic_configs'
   mode '0755'
   owner 'ec2-user'
 end
