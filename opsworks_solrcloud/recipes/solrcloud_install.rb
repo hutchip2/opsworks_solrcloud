@@ -158,6 +158,25 @@ file '/usr/local/solr/solr/core.properties' do
   owner 'ec2-user'
 end
 
+directory '/usr/local/solr/solr/conf' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+file '/usr/local/solr/solr/conf/schema.xml' do
+  content "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><schema version=\"1.5\"><fields><field name=\"id\" type=\"string\" indexed=\"true\" stored=\"true\" required=\"true\"/><field name=\"addr_from\" type=\"string\" indexed=\"true\" stored=\"true\" required=\"true\"/><field name=\"addr_to\" type=\"string\" indexed=\"true\" stored=\"true\" required=\"true\"/><field name=\"subject\" type=\"string\" indexed=\"true\" stored=\"true\" required=\"true\"/></fields><uniqueKey>id</uniqueKey><types><fieldType name=\"string\" class=\"solr.StrField\" /></types></schema>"
+  mode '0755'
+  owner 'ec2-user'
+end
+
+file '/usr/local/solr/solr/conf/solrconfig.xml' do
+  content "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><config><luceneMatchVersion>LUCENE_43</luceneMatchVersion><requestDispatcher handleSelect=\"false\"><httpCaching never304=\"true\" /></requestDispatcher><requestHandler name=\"/select\" class=\"solr.SearchHandler\" /><requestHandler name=\"/update\" class=\"solr.UpdateRequestHandler\" /><requestHandler name=\"/admin\" class=\"solr.admin.AdminHandlers\" /><requestHandler name=\"/analysis/field\" class=\"solr.FieldAnalysisRequestHandler\" startup=\"lazy\" /></config>"
+  mode '0755'
+  owner 'ec2-user'
+end
+
 =begin
 directory '/usr/local/solr/solr/configsets/collection1' do
   owner 'root'
