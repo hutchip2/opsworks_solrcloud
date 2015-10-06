@@ -153,6 +153,22 @@ remote_file tarball_file do
 end
 
 
+directory '/usr/local/solr/solr/configsets/basic_configs' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+
+directory '/usr/local/solr/solr/configsets/conf' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+
 directory '/usr/local/solr/solr/cores/core1' do
   owner 'root'
   group 'root'
