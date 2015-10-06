@@ -153,21 +153,6 @@ remote_file tarball_file do
 end
 
 
-directory '/usr/local/solr/solr/configsets/conf' do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-end
-
-file "/usr/local/solr/solr/configsets/conf/solrconfig.xml" do
-  owner 'root'
-  group 'root'
-  mode 0755
-  content ::File.open("/usr/local/solr_zkconfigsets/conf/solrconfig.xml").read
-  action :create
-end
-
 directory '/usr/local/solr/solr/cores/core1' do
   owner 'root'
   group 'root'
