@@ -153,6 +153,21 @@ remote_file tarball_file do
 end
 
 
+directory '/usr/local/solr/solr/configsets/conf' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+remote_file "Copy configset files" do 
+  path "/usr/local/solr/solr/configsets/conf/solrconfig.xml" 
+  source "/usr/local/solr_zkconfigsets/conf/solrconfig.xml"
+  owner 'root'
+  group 'root'
+  mode 0755
+end
+
 directory '/usr/local/solr/solr/cores/core1' do
   owner 'root'
   group 'root'
