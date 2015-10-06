@@ -175,13 +175,14 @@ end
 
 file '/usr/local/solr/solr/cores/core1/core.properties' do
   content 'name=core1
-           nconfigName='
+           configName='
   mode '0755'
   owner 'ec2-user'
 end
 
 file '/usr/local/solr/solr/cores/core2/core.properties' do
-  content 'name=core2'
+  content 'name=core2
+           configName=myconfig'
   mode '0755'
   owner 'ec2-user'
 end
