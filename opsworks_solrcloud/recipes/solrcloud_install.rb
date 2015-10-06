@@ -161,7 +161,7 @@ directory '/usr/local/solr/solr/configsets/basic_configs' do
 end
 
 
-directory '/usr/local/solr/solr/configsets/conf' do
+directory '/usr/local/solr/solr/configsets/basic_configs/conf' do
   owner 'root'
   group 'root'
   mode '0755'
