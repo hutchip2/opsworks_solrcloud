@@ -156,3 +156,41 @@ execute 'create_collection' do
     command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
     ignore_failure true
 end
+
+directory '/usr/local/solr/solr/cores/core1' do
+  owner 'solr'
+  group 'solr'
+  mode '0755'
+  action :create
+end
+
+directory '/usr/local/solr/solr/cores/core2' do
+  owner 'solr'
+  group 'solr'
+  mode '0755'
+  action :create
+end
+
+file '/usr/local/solr/solr/cores/core1/core.properties' do
+  content   "name=core1
+            config=solrconfig.xml
+            schema=schema.xml
+            dataDir=data
+            collection=collection1
+            coreNodeName=core_node1"
+  mode '0755'
+  owner 'solr'
+  group 'solr'
+end
+
+file '/usr/local/solr/solr/cores/core2/core.properties' do
+  content   "name=core2
+            config=solrconfig.xml
+            schema=schema.xml
+            dataDir=data
+            collection=collection1
+            coreNodeName=core_node2"
+  mode '0755'
+  owner 'solr'
+  group 'solr'
+end
