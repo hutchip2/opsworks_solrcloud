@@ -152,9 +152,10 @@ remote_file tarball_file do
   action :delete
 end
 
-execute 'create_collection' do
-  command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
-end
+
+#execute 'create_collection' do
+#  command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
+#end
 
 =begin
 file '/usr/local/solr/solr/core.properties' do
