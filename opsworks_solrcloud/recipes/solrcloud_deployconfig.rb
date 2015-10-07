@@ -8,10 +8,6 @@ require 'zk'
 require 'net/http'
 require 'json'
 
-execute 'create_collection' do
-    command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
-end
-
 #
 # see solrcloud::zkconfigsets
 #
