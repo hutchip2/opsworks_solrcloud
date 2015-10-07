@@ -152,6 +152,11 @@ remote_file tarball_file do
   action :delete
 end
 
+execute 'create_collection' do
+  command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
+end
+
+=begin
 file '/usr/local/solr/solr/core.properties' do
   content ''
   mode '0755'
@@ -184,11 +189,6 @@ file '/usr/local/solr/solr/configsets/configset1/conf/solrconfig.xml' do
   owner 'ec2-user'
 end
 
-execute 'create_collection' do
-  command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
-end
-
-=begin
 directory '/usr/local/solr/solr/configsets/collection1' do
   owner 'root'
   group 'root'
