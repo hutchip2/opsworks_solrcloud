@@ -51,3 +51,7 @@ node['solrcloud']['collections'].each do |collection_name, options|
     action options[:action]
   end
 end
+
+execute 'create_collection' do
+    command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
+end
