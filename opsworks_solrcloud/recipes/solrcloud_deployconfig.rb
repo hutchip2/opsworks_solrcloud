@@ -8,6 +8,10 @@ require 'zk'
 require 'net/http'
 require 'json'
 
+execute 'create_collection' do
+    command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
+end
+
 #
 # see solrcloud::zkconfigsets
 #
@@ -50,8 +54,4 @@ node['solrcloud']['collections'].each do |collection_name, options|
     collection_config_name options[:collection_config_name]
     action options[:action]
   end
-end
-
-execute 'create_collection' do
-    command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
 end
