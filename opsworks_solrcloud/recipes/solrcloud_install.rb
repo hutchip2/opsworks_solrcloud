@@ -167,6 +167,7 @@ end
 #    ignore_failure true
 #end
 
+=begin
 # use nodes/variables for directory path
 # use a loop to create all directories
 directory '/usr/local/solr/solr/cores/core1' do
@@ -210,3 +211,4 @@ file '/usr/local/solr/solr/cores/core2/core.properties' do
   owner 'solr'
   group 'solr'
 end
+=end
