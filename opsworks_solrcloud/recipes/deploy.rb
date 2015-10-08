@@ -22,9 +22,9 @@ config_directory = '/usr/local/solr_zkconfigsets'
 collections = Dir.entries(config_directory).select {|entry| File.directory? File.join(config_directory,entry) and !(entry =='.' || entry == '..' || entry.start_with?('.')) }
 
 execute '/usr/local/solr_zkconfigsets' do
-    unless collections.empty? do
+    unless collections.empty?
       collections.each do |collection|
-        unless collection.to_s.nil? or collection.to_s.empty? or collection.to_s.blank? do
+        unless collection.to_s.nil? or collection.to_s.empty? or collection.to_s.blank?
           command "/usr/local/solr-5.3.0/bin/./solr create -c #{collection}"
         end
       end
