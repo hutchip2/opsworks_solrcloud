@@ -162,7 +162,6 @@ collections = Dir.entries(config_directory).select {|entry| File.directory? File
 
 execute 'create_collection' do
     collections.each do |collection|
-      if 
       command '/usr/local/solr-5.3.0/bin/./solr create -c #{collection}'
     end
     ignore_failure true
