@@ -25,7 +25,18 @@ execute '/usr/local/solr_zkconfigsets' do
     unless collections.empty?
       collections.each do |collection|
         unless collection.to_s.nil? or collection.to_s.empty? or collection.to_s.blank?
+          # create current collection
           command "/usr/local/solr-5.3.0/bin/./solr create -c #{collection.to_s}"
+          # store 'managed-schema' for current collection
+          #file "/etc/init.d/someService" do
+          #  owner 'solr'
+          #  group 'solr'
+          #  mode 0755
+          #  content ::File.open("/usr/local/solr_zkconfigsets/#{collection}/conf/managed-schema").read
+          #  action :create
+          #end
+          # store 'solrconfig.xml' for current collection
+          
         end
       end
     end
