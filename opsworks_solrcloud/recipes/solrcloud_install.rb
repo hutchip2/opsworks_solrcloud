@@ -152,11 +152,15 @@ remote_file tarball_file do
   action :delete
 end
 
+# begin custom blocks...
+
 execute 'create_collection' do
     command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
     ignore_failure true
 end
 
+# use nodes/variables for directory path
+# use a loop to create all directories
 directory '/usr/local/solr/solr/cores/core1' do
   owner 'solr'
   group 'solr'
@@ -164,6 +168,7 @@ directory '/usr/local/solr/solr/cores/core1' do
   action :create
 end
 
+# use nodes/variables for directory path
 directory '/usr/local/solr/solr/cores/core2' do
   owner 'solr'
   group 'solr'
@@ -171,6 +176,8 @@ directory '/usr/local/solr/solr/cores/core2' do
   action :create
 end
 
+# use nodes/variables for file path
+# use a loop to make both files
 file '/usr/local/solr/solr/cores/core1/core.properties' do
   content   "name=core1
             config=solrconfig.xml
@@ -183,6 +190,7 @@ file '/usr/local/solr/solr/cores/core1/core.properties' do
   group 'solr'
 end
 
+# use nodes/variables for file path
 file '/usr/local/solr/solr/cores/core2/core.properties' do
   content   "name=core2
             config=solrconfig.xml
