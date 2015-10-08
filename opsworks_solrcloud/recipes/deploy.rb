@@ -25,7 +25,7 @@ execute '/usr/local/solr_zkconfigsets' do
     unless collections.empty?
       collections.each do |collection|
         unless collection.to_s.nil? or collection.to_s.empty? or collection.to_s.blank?
-          command "/usr/local/solr-5.3.0/bin/./solr create -c #{collection}"
+          command "/usr/local/solr-5.3.0/bin/./solr create -c #{collection.to_s}"
         end
       end
     end
