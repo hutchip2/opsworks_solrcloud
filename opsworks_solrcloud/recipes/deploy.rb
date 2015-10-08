@@ -18,27 +18,12 @@ else
   end
 end
 
-=begin
+config_directory = '/usr/local/solr_zkconfigsets'
+collections = Dir.entries(config_directory).select {|entry| File.directory? File.join(config_directory,entry) and !(entry =='.' || entry == '..' || entry.start_with?('.')) }
 
-# get tarball from s3 bucket and untar
-aws_s3_file "solrconfig.tar.gz" do
-  bucket "labelinsight-documents"
-  remote_path "/solr/solrconfig.tar.gz"
-  aws_access_key_id node[:custom_access_key]
-  aws_secret_access_key node[:custom_secret_key]
+execute 'create_collection' do
+    collections.each do |collection|
+      command '/usr/local/solr-5.3.0/bin/./solr create -c #{collection}'
+    end
+    ignore_failure true
 end
-
-bash 'extract_solr_tarball_from_s3' do
-  user 'root'
-  cwd '/tmp'
-
-  code <<-EOS
-    tar xzf #{tarball_file}
-    mv --force #{tarball_dir} #{node['solrcloud']['source_dir']}
-    chown -R #{node['solrcloud']['user']}:#{node['solrcloud']['group']} #{node['solrcloud']['source_dir']}
-    chmod #{node['solrcloud']['dir_mode']} #{node['solrcloud']['source_dir']}
-  EOS
-  creates ::File.join(node['solrcloud']['source_dir'], 'dist', "solr-core-#{node['solrcloud']['version']}.jar")
-end
-
-=end
