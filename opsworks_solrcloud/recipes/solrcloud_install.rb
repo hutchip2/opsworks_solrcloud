@@ -152,10 +152,19 @@ remote_file tarball_file do
   action :delete
 end
 
-# begin custom blocks...
+# BEGIN CUSTOM BLOCKS
+
+# create collections based on number of folders in the tar.gz folder
+#   each collection folder will begin with "collection...."
+
+config_directory = '/usr/local/solr_zkconfigsets'
+collections = Dir.entries(config_directory).select {|entry| File.directory? File.join(config_directory,entry) and !(entry =='.' || entry == '..' || entry.start_with?('.')) }
 
 execute 'create_collection' do
-    command '/usr/local/solr-5.3.0/bin/./solr create -c collection1'
+    collections.each do |collection|
+      if 
+      command '/usr/local/solr-5.3.0/bin/./solr create -c #{collection}'
+    end
     ignore_failure true
 end
 
