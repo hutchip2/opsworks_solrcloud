@@ -53,7 +53,7 @@ node['solrcloud']['collections'].each do |collection_name, options|
 end
 
 config_directory = '/usr/local/solr_zkconfigsets'
-collections = Dir.entries(config_directory).select {|entry| File.directory? File.join(config_directory,entry) and !(entry =='.' || entry == '..' || entry.start_with?('.')) }
+collections = Dir.entries(config_directory).select {|entry| File.directory? File.join(config_directory,entry) and !(entry.start_with?('.')) }
 
 execute '/usr/local/solr_zkconfigsets' do
     unless collections.empty?
