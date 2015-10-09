@@ -18,6 +18,7 @@ else
   end
 end
 
+=begin
 config_directory = '/usr/local/solr_zkconfigsets'
 collections = Dir.entries(config_directory).select {|entry| File.directory? File.join(config_directory,entry) and !(entry =='.' || entry == '..' || entry.start_with?('.')) }
 
@@ -42,3 +43,4 @@ execute '/usr/local/solr_zkconfigsets' do
     end
     ignore_failure true
 end
+=end
