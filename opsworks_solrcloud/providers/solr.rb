@@ -64,7 +64,7 @@ action :getconfig do
   bash 'zkconfigtar' do
     cwd zkconfigtar_tmp
     code <<-EOF
-         tar xvfz solrconfig.tar.gz
+         tar xvfz solrconfig.*
          rm solrconfig.tar.gz
          cp -R * #{node['solrcloud']['zkconfigsets_home']}
     EOF
