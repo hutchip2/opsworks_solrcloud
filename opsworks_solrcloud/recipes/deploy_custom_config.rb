@@ -37,10 +37,10 @@ action :getconfig do
   bash 'zkconfigtar' do
     cwd zkconfigtar_tmp
     
-    Chef::Log.info("Current working directory: #{zkconfigtar_tmp}")
-    Chef::Log.info("Executing: tar xvfz solrconfig.tar.gz")
-    Chef::Log.info("Removing solrconfig.tar.gz")
-    Chef::Log.info("Copying #{node['solrcloud']['zkconfigsets_home]}")
+    # Chef::Log.info("Current working directory: #{zkconfigtar_tmp}")
+    # Chef::Log.info("Executing: tar xvfz solrconfig.tar.gz")
+    # Chef::Log.info("Removing solrconfig.tar.gz")
+    # Chef::Log.info("Copying #{node['solrcloud']['zkconfigsets_home]}")
     
     code <<-EOF
          tar xvfz solrconfig.tar.gz
