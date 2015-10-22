@@ -16,8 +16,8 @@ node['solrcloud']['zkconfigsets'].each do |configset_name, options|
     force_upload true
     #user node['solrcloud']['user']
     #group node['solrcloud']['group']
-    #zkcli node['solrcloud']['zookeeper']['zkcli']
-    #zkhost node['solrcloud']['solr_config']['solrcloud']['zk_host'].first
+    zkcli node['solrcloud']['zookeeper']['zkcli']
+    zkhost node['solrcloud']['solr_config']['solrcloud']['zk_host'].first
     #zkconfigsets_home node['solrcloud']['zkconfigsets_home']
     #zkconfigsets_cookbook node['solrcloud']['zkconfigsets_cookbook']
     #manage_zkconfigsets node['solrcloud']['manage_zkconfigsets']
