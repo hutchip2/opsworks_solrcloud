@@ -13,18 +13,18 @@ require 'json'
 #
 node['solrcloud']['zkconfigsets'].each do |configset_name, options|
   solrcloud_zkconfigset configset_name do
-    force_upload true
-    #user node['solrcloud']['user']
-    #group node['solrcloud']['group']
+    #force_upload true
+    user node['solrcloud']['user']
+    group node['solrcloud']['group']
     #zkcli node['solrcloud']['zookeeper']['zkcli']
     zkcli node['solrcloud']['solr_config']['solrcloud']['zk_host'][1]
     zkhost node['solrcloud']['solr_config']['solrcloud']['zk_host'].first
-    #zkconfigsets_home node['solrcloud']['zkconfigsets_home']
-    #zkconfigsets_cookbook node['solrcloud']['zkconfigsets_cookbook']
-    #manage_zkconfigsets node['solrcloud']['manage_zkconfigsets']
-    #solr_zkcli node['solrcloud']['zookeeper']['solr_zkcli']
-    #force_upload node['solrcloud']['force_zkconfigsets_upload']
-    #action options[:action]
+    zkconfigsets_home node['solrcloud']['zkconfigsets_home']
+    zkconfigsets_cookbook node['solrcloud']['zkconfigsets_cookbook']
+    manage_zkconfigsets node['solrcloud']['manage_zkconfigsets']
+    solr_zkcli node['solrcloud']['zookeeper']['solr_zkcli']
+    force_upload node['solrcloud']['force_zkconfigsets_upload']
+    action options[:action]
   end
 end
 
