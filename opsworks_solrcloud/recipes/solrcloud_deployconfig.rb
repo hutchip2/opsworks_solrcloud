@@ -63,6 +63,7 @@ execute '/usr/local/solr_zkconfigsets' do
           # create current collection
           command "/usr/local/solr-5.3.0/bin/./solr create -c #{collection.to_s}"
           # store 'managed-schema' for current collection...
+=begin
           file "/etc/init.d/someService" do
             owner 'solr'
             group 'solr'
@@ -70,6 +71,7 @@ execute '/usr/local/solr_zkconfigsets' do
             content ::File.open("/usr/local/solr_zkconfigsets/#{collection}/conf/managed-schema").read
             action :create
           end
+=end
           # store 'solrconfig.xml' for current collection...
           
         end
