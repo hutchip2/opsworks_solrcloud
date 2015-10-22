@@ -14,7 +14,6 @@ require 'json'
 node['solrcloud']['zkconfigsets'].each do |configset_name, options|
   solrcloud_zkconfigset configset_name do
     force_upload true
-    option option_name
     #user node['solrcloud']['user']
     #group node['solrcloud']['group']
     #zkcli node['solrcloud']['zookeeper']['zkcli']
