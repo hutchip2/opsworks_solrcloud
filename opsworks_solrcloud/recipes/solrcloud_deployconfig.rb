@@ -13,16 +13,18 @@ require 'json'
 #
 node['solrcloud']['zkconfigsets'].each do |configset_name, options|
   solrcloud_zkconfigset configset_name do
-    user node['solrcloud']['user']
-    group node['solrcloud']['group']
-    zkcli node['solrcloud']['zookeeper']['zkcli']
-    zkhost node['solrcloud']['solr_config']['solrcloud']['zk_host'].first
-    zkconfigsets_home node['solrcloud']['zkconfigsets_home']
-    zkconfigsets_cookbook node['solrcloud']['zkconfigsets_cookbook']
-    manage_zkconfigsets node['solrcloud']['manage_zkconfigsets']
-    solr_zkcli node['solrcloud']['zookeeper']['solr_zkcli']
-    force_upload node['solrcloud']['force_zkconfigsets_upload']
-    action options[:action]
+    force_upload true
+    option option_name
+    #user node['solrcloud']['user']
+    #group node['solrcloud']['group']
+    #zkcli node['solrcloud']['zookeeper']['zkcli']
+    #zkhost node['solrcloud']['solr_config']['solrcloud']['zk_host'].first
+    #zkconfigsets_home node['solrcloud']['zkconfigsets_home']
+    #zkconfigsets_cookbook node['solrcloud']['zkconfigsets_cookbook']
+    #manage_zkconfigsets node['solrcloud']['manage_zkconfigsets']
+    #solr_zkcli node['solrcloud']['zookeeper']['solr_zkcli']
+    #force_upload node['solrcloud']['force_zkconfigsets_upload']
+    #action options[:action]
   end
 end
 
@@ -52,7 +54,7 @@ node['solrcloud']['collections'].each do |collection_name, options|
   end
 end
 
-
+=begin
 config_directory = '/usr/local/solr_zkconfigsets'
 collections = Dir.entries(config_directory).select {|entry| File.directory? File.join(config_directory,entry) and !(entry.start_with?('.')) }
 
@@ -63,7 +65,7 @@ execute '/usr/local/solr_zkconfigsets' do
           # create current collection
           command "/usr/local/solr-5.3.0/bin/./solr create -c #{collection.to_s}"
           # store 'managed-schema' for current collection...
-=begin
+
           file "/etc/init.d/someService" do
             owner 'solr'
             group 'solr'
@@ -71,7 +73,7 @@ execute '/usr/local/solr_zkconfigsets' do
             content ::File.open("/usr/local/solr_zkconfigsets/#{collection}/conf/managed-schema").read
             action :create
           end
-=end
+
           # store 'solrconfig.xml' for current collection...
           
         end
@@ -79,3 +81,4 @@ execute '/usr/local/solr_zkconfigsets' do
     end
     ignore_failure true
 end
+=end
